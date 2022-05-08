@@ -1,0 +1,37 @@
+syntax = "proto3";
+option cc_generic_services = true;
+
+message UserInfo {
+  string user_id = 1;
+  string user_name = 2;
+  int32 user_gender = 3;    // 1 -- man 2 -- woman
+}
+
+message QuerySingleUserInfoRequest {
+  string user_id = 1;
+}
+
+message QuerySingleUserInfoResponse {
+  int32 ret_code = 1;     // 0 -- succ, otherwise failed
+  string ret_info = 2;    // OK -- succ, otherwise return detail error info
+  UserInfo user_info = 3;
+}
+
+message AddSingleUserInfoRequset {
+  UserInfo use_info = 1;
+}
+
+message AddSingleUserInfoResponse {
+  int32 ret_code = 1;     // 0 -- succ, otherwise failed
+  string ret_info = 2;    // OK -- succ, otherwise return detail error info
+  UserInfo use_info = 3;
+}
+
+
+service UserInfoService {
+  // rpc method name
+  rpc QuerySingleUserInfo(QuerySingleUserInfoRequest) returns (QuerySingleUserInfoResponse);
+
+  // rpc method name
+  rpc AddSingleUserInfo(AddSingleUserInfoRequset) returns (AddSingleUserInfoResponse);
+}
