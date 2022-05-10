@@ -2,11 +2,12 @@
 PATH_BIN = bin
 PATH_SERVICE = service
 PATH_PB = pb
+PATH_INTERFACE = interface
 PATH_TINYRPC = ../tinyrpc
 
 
 # libtinypc
-TINYRPC_INC = $(PATH_TINYRPC)/tinypc
+TINYRPC_INC = $(PATH_TINYRPC)
 TINYRPC_LIB = $(PATH_TINYRPC)/lib/libtinyrpc.a
 
 
@@ -16,7 +17,7 @@ CXX := g++
 
 CXX_FLAGS := -g -O3 -std=c++11 -Wall -Wno-deprecated -Wno-unused-but-set-variable
 
-CXX_FLAGS += -I$(PATH_TINYRPC)	-I$(PATH_PB)
+CXX_FLAGS += -I$(PATH_TINYRPC)	-I$(PATH_PB) -I$(PATH_SERVICE)
 
 LIBS += /usr/lib/libprotobuf.a /usr/lib/libtinyxml.a
 
