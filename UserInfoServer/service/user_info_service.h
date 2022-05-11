@@ -1,7 +1,8 @@
 #ifndef USERINFOSERVER_SERVICE_USER_INFO_SERVICE_H
 #define USERINFOSERVER_SERVICE_USER_INFO_SERVICE_H
 
-#include "pb/UserInfoServer.pb.h"
+#include <google/protobuf/service.h>
+#include "UserInfoServer.pb.h"
 
 class UserInfoServiceImpl : public UserInfoService {
 
@@ -9,12 +10,12 @@ class UserInfoServiceImpl : public UserInfoService {
   UserInfoServiceImpl() = default;
   ~UserInfoServiceImpl() = default;
 
-  void QuerySingleUserInfo(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+  void QuerySingleUserInfo(google::protobuf::RpcController* controller,
                        const ::QuerySingleUserInfoRequest* request,
                        ::QuerySingleUserInfoResponse* response,
                        ::google::protobuf::Closure* done);
 
-  void AddSingleUserInfo(::PROTOBUF_NAMESPACE_ID::RpcController* controller,
+  void AddSingleUserInfo(google::protobuf::RpcController* controller,
                        const ::AddSingleUserInfoRequset* request,
                        ::AddSingleUserInfoResponse* response,
                        ::google::protobuf::Closure* done);

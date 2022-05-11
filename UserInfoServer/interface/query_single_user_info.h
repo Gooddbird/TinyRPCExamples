@@ -1,14 +1,14 @@
 #ifndef USERINFOSERVER_INTERFACE_QUERY_SINGLE_USER_INFO_H
 #define USERINFOSERVER_INTERFACE_QUERY_SINGLE_USER_INFO_H
 
-#include "abstract_interface.h"
+#include "UserInfoServer.pb.h"
 
-class QuerySingleUserInfo : public AbstractInterface {
+class QuerySingleUserInfoInterface {
  public:
-  QuerySingleUserInfo() = default;
-  ~QuerySingleUserInfo() = default;
+  QuerySingleUserInfoInterface() = default;
+  ~QuerySingleUserInfoInterface() = default;
 
-  int run(google::protobuf::Service* request, google::protobuf::Service* response) = 0;
+  int run(const ::QuerySingleUserInfoRequest* request, ::QuerySingleUserInfoResponse* response);
 
 };
 

@@ -3,6 +3,7 @@
 #include "tinyrpc/comm/config.h"
 #include "tinyrpc/net/net_address.h"
 #include "tinyrpc/net/tcp/tcp_server.h"
+#include "user_info_service.h"
 
 
 tinyrpc::Logger::ptr gRpcLogger; 
@@ -17,7 +18,10 @@ int main(int argc, char* argv[]) {
   tinyrpc::IPAddress::ptr addr = std::make_shared<tinyrpc::IPAddress>("127.0.0.1", 39999);
   tinyrpc::TcpServer server(addr);
 
+  UserInfoServiceImpl service;
+  server.registerService(&service);
 
+  server.start();
 
   return 0;
 }
